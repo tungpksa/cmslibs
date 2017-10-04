@@ -1,0 +1,288 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Responsive Horizontal Nav Menu Demo</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<style>
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section { display: block }
+
+body { line-height: 1 }
+
+ol,
+ul { list-style: none }
+
+blockquote,
+q { quotes: none }
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0
+}
+
+body {
+  font-family: 'roboto', arial;
+  overflow-y: scroll;
+}
+
+nav {
+  background: #DA4453;
+  overflow: hidden;
+}
+
+nav ul { margin: 0 0 2em; }
+
+nav ul li { float: left; }
+
+nav ul li.more {
+  width: 3em;
+  text-align: center;
+  display: none;
+}
+
+nav ul li.more:hover ul#overflow {
+  opacity: 1;
+  visibility: visible;
+}
+
+nav ul li a,
+nav ul li span {
+  display: block;
+  background: #DA4453;
+  color: #fff;
+  text-decoration: none;
+  padding: 1em;
+  cursor: pointer;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s;
+}
+
+nav ul li a:hover,
+nav ul li span:hover { background: #ED5565; }
+
+nav #overflow {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+  text-align: left;
+  -webkit-transition-duration: .3s;
+  transition-duration: .3s;
+}
+
+nav #overflow li { float: none; }
+
+nav #overflow li a {
+  background: #34BC9D;
+  white-space: nowrap;
+}
+
+nav #overflow li a:hover { background: #46CFB0; }
+</style>
+</head>
+
+<body>
+<nav>
+  <ul id="nav">
+  <li><a href="#">Home</a></li>
+  <li><a href="#">Blog</a></li>
+  <li><a href="#">Works</a></li>
+  <li><a href="#">Contact</a></li>
+  <li><a href="#">About</a></li>
+  <li><a href="#">Menu 6</a></li>
+  <li><a href="#">Menu 7</a></li>
+  <li><a href="#">Menu 8</a></li>
+  <li><a href="#">Menu 9</a></li>
+  <li><a href="#">Menu 10</a></li>
+  <li><a href="#">Menu 11</a></li>
+  <li><a href="#">Menu 12</a></li>
+  <li><a href="#">Menu 13</a></li>
+  <li><a href="#">Menu 14</a></li>
+  <li><a href="#">Menu 15</a></li>
+  <li><a href="#">Menu 16</a></li>
+  <li><a href="#">Menu 17</a></li>
+  <li><a href="#">Menu 18</a></li>
+  <li><a href="#">Menu 19</a></li>
+  <li><a href="#">Menu 20</a></li>
+  <li><a href="#">Menu 21</a></li>
+  <li><a href="#">Menu 22</a></li>
+  <li class="more"> <span>...</span>
+    <ul id="overflow">
+    </ul>
+  </li>
+</ul>
+</nav>
+<h1 style="margin:50px auto; text-align:center">Responsive Horizontal Nav Menu Demo</h1>
+<div class="jquery-script-ads" align="center"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+<h2 style="margin:50px auto; text-align:center">Resize the window to see it in action</h2>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script> 
+<script>
+window.onresize = navigationResize;
+navigationResize();
+
+function navigationResize() {  
+  $('#nav li.more').before($('#overflow > li'));
+  
+  var $navItemMore = $('#nav > li.more'),
+  		$navItems = $('#nav > li:not(.more)'),
+      navItemMoreWidth = navItemWidth = $navItemMore.width(),
+      windowWidth = $(window).width(),
+      navItemMoreLeft, offset, navOverflowWidth;
+  
+  $navItems.each(function() {
+    navItemWidth += $(this).width();
+  });
+  
+  navItemWidth > windowWidth ? $navItemMore.show() : $navItemMore.hide();
+    
+  while (navItemWidth > windowWidth) {
+    navItemWidth -= $navItems.last().width();
+    $navItems.last().prependTo('#overflow');
+    $navItems.splice(-1,1);
+  }
+  
+  navItemMoreLeft = $('#nav .more').offset().left;
+  navOverflowWidth = $('#overflow').width();  
+  offset = navItemMoreLeft + navItemMoreWidth - navOverflowWidth;
+    
+  $('#overflow').css({
+    'left': offset
+  });
+}
+</script>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</body>
+</html>
