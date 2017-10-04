@@ -1,0 +1,8 @@
+Put this code on file functions.php:
+
+/* Product FAQ */
+if(!class_exists('Product_FAQ')){
+    require_once 'inc/product-faq/product-faq.php';
+}
+
+Done!
