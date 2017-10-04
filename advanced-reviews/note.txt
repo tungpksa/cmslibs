@@ -1,0 +1,5 @@
+1. import file class.woocommerce-advanced-reviews.php vào function.php
+2. Template Woocommerce:
+wpnetbase-product-reviews.php
+wpnetbase-single-product-reviews.php
+3. copy style css
