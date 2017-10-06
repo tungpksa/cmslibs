@@ -1,5 +1,10 @@
 ﻿WP Function
 
+$home_path = function_exists('get_home_path') ? get_home_path() : ABSPATH;
+$htaccess_file = $home_path . '.htaccess';
+$mod_rewrite_enabled = function_exists('got_mod_rewrite') ? got_mod_rewrite() : false;
+***********
+
 Skip Cart Go Straight to Checkout Page in WooCommerce
 WooCommerce workflow can be a little too long for simple products, here’s how to get the product to skip past the cart page and go straight to the checkout page.
 
