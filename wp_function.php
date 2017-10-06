@@ -1,5 +1,20 @@
 ﻿WP Function
 
+copy and unzip file plugin
+
+function my_plugin_activate() {
+ $path = get_home_path() .'tshirtecommerce';
+	if (file_exists($path) === false)
+	{
+		WP_Filesystem();
+		$file = dirname(__FILE__).'/core.zip';
+		
+		$unzipfile = unzip_file( $file, get_home_path());		
+	}
+}
+register_activation_hook( __FILE__, 'my_plugin_activate' );
+
+***********
 $home_path = function_exists('get_home_path') ? get_home_path() : ABSPATH;
 $htaccess_file = $home_path . '.htaccess';
 $mod_rewrite_enabled = function_exists('got_mod_rewrite') ? got_mod_rewrite() : false;
